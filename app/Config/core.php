@@ -6,18 +6,9 @@
  *
  * PHP 5
  *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       app.Config
  * @since         CakePHP(tm) v 0.2.9
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
@@ -70,7 +61,7 @@
  * - `renderer` - string - The class responsible for rendering uncaught exceptions. If you choose a custom class you
  *   should place the file for that class in app/Lib/Error. This class needs to implement a render method.
  * - `log` - boolean - Should Exceptions be logged?
- * - `skipLog` - array - list of exceptions to skip for logging. Exceptions that
+  * - `skipLog` - array - list of exceptions to skip for logging. Exceptions that
  *   extend one of the listed exceptions will also be skipped for logging.
  *   Example: `'skipLog' => array('NotFoundException', 'UnauthorizedException')`
  *
@@ -98,7 +89,7 @@
  *
  * And uncomment the App.baseUrl below. But keep in mind
  * that plugin assets such as images, CSS and Javascript files
- * will not work without url rewriting!
+ * will not work without URL rewriting!
  * To work around this issue you should either symlink or copy
  * the plugin assets into you app's webroot directory. This is
  * recommended even when you are using mod_rewrite. Handling static
@@ -151,7 +142,7 @@
  *	`manager_index()` and `/manager/controller/index`
  *
  */
-	//Configure::write('Routing.prefixes', array('admin'));
+Configure::write('Routing.prefixes', array('admin'));
 
 /**
  * Turn off all caching application-wide.
@@ -223,13 +214,11 @@
 
 /**
  * A random string used in security hashing methods.
- */
-	Configure::write('Security.salt', 'DYhG93b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi');
+ */	Configure::write('Security.salt', '7909553b92a4b67048b5ad62e4c68cec64bb7ab5');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
- */
-	Configure::write('Security.cipherSeed', '76859309657453542486767696749683645');
+ */	Configure::write('Security.cipherSeed', '656537336165343066633434326638');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).
@@ -352,7 +341,7 @@ if (Configure::read('debug') > 0) {
 }
 
 // Prefix each application on the same server with a different string, to avoid Memcache and APC conflicts.
-$prefix = 'myapp_';
+$prefix = 'app_';
 
 /**
  * Configure the cache used for general framework caching. Path information,

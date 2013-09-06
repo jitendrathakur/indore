@@ -16,8 +16,8 @@
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       app.Console
  * @since         CakePHP(tm) v 2.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 $ds = DIRECTORY_SEPARATOR;
 $dispatcher = 'Cake' . $ds . 'Console' . $ds . 'ShellDispatcher.php';
 
@@ -25,11 +25,11 @@ if (function_exists('ini_set')) {
 	$root = dirname(dirname(dirname(__FILE__)));
 
 	// the following line differs from its sibling
-	// /lib/Cake/Console/Templates/skel/Console/cake.php
-	ini_set('include_path', $root . $ds . 'lib' . PATH_SEPARATOR . ini_get('include_path'));
+	// /app/Console/cake.php
+	ini_set('include_path', $root . PATH_SEPARATOR .  $ds . 'opt' . $ds . 'lampp' . $ds . 'htdocs' . $ds . 'indore' . $ds . 'lib' . PATH_SEPARATOR . ini_get('include_path'));
 }
 
-if (!include($dispatcher)) {
+if (!include ($dispatcher)) {
 	trigger_error('Could not locate CakePHP core files.', E_USER_ERROR);
 }
 unset($paths, $path, $dispatcher, $root, $ds);
