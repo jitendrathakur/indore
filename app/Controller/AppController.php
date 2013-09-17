@@ -63,6 +63,36 @@ class AppController extends Controller {
    'Js',   
   );
 
+
+   public function beforeFilter() {   
+
+    if ($this->Session->read('Auth.User.userGroup') == 'Admin') {
+      $this->Auth->allow('*');
+      if ($this->here == '/') {
+        $this->redirect(array('controller' => 'users', 'action' => 'home', 'admin' => true));
+      }      
+    } else if ($this->Session->read('Auth.User.userGroup') == 'General') {
+      if ($this->request->prefix != 'admin') {
+        $this->Auth->allow('*');
+      } else {
+        $this->redirect('/');
+      }
+    } else {
+      $this->Auth->allow('signup', 'login', 'forgot_password','reset_password', 'reset_new', 'sampleform', 'samplesurveylist', 'pixlefire', 'securitysha256md5crypthiddenprohibited');
+
+    }
+
+    
+
+    if ($this->request->prefix == 'admin') {
+      $this->layout = 'admin';
+
+    }
+
+    $this->Auth->allow('*');
+
+  }//end beforeFilter()
+
  /**
   * Function to send json response. This function is generally used when an ajax request is made
   *

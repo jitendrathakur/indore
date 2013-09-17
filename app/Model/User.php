@@ -115,4 +115,78 @@ class User extends AppModel {
 		)
 	);
 
+	/**
+     * callback function
+     *
+     * @return void.
+     */
+  public function beforeSave($options = Array()) {
+      if(isset($this->data['User']['password'])) {
+        $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+      }
+      return true;
+  }
+
+   /**
+     * Method used to check for password confirmation
+     *
+     * @return boolean If password is not match with confirm_password then return false otherwise return true
+     */
+  public function confirmPassword()
+  {
+      // Check password and confirm_password are same or not
+      return ($this->data['User']['password'] == $this->data['User']['password2']);
+  }//end confirmPassword()
+
+
+  /**
+     * Callback function to handle logic after save operation.   
+     *
+     * @access public
+     *
+     * @return void
+     */
+  public function afterSave($created)
+  {
+      // Call to function to save user group.
+      $userId = $this->id;
+      if (!empty($this->data['User']['group_id'])) {
+        $parentGroupId = $this->data['User']['group_id'];
+      }
+      if (!empty($userId) && !empty($parentGroupId)) {
+        $this->setUserGroup($userId, $parentGroupId);
+      }
+  }//end afterSave()
+
+
+   /**
+     * Function to set user group.
+     *
+     * @param integer $userId        User id.
+     * @param integer $parentGroupId Group id. 
+     *
+     * @return void
+     */
+  public function setUserGroup($userId, $parentGroupId)
+  {
+      $aro = ClassRegistry::init('Aro');
+      // Condition to delete existing record from aros
+      $conditions = array('Aro.foreign_key' => $userId);
+      // Delete the member from aros table
+      $aro->deleteAll($conditions);
+
+      // Build data to save
+      $data = array(
+        'parent_id'   => $parentGroupId,
+        'foreign_key' => $userId,
+        'alias'       => 'User::' . $userId,
+      );
+
+      // Prepare model to save data
+      $aro->create();
+      // Save needed data
+      $aro->save($data);
+
+  }//end setUserGroup()
+
 }

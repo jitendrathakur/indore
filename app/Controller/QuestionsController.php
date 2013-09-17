@@ -22,6 +22,17 @@ class QuestionsController extends AppController {
  */
 	public $components = array('Paginator');
 
+
+  /**
+   * method call before any action.
+   *
+   * return void
+   */
+  public function beforeFilter() {
+      parent::beforeFilter();
+      $this->Auth->allow('*');
+  }//end beforeFilter()
+
 /**
  * index method
  *

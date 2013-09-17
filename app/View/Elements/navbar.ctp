@@ -58,37 +58,8 @@
                                 'url'     => array('controller' => 'questions', 'action' => 'add', 'admin' => true),
                             )                          
                         )
-                    ),                    
-                    array(
-                        'title' => 'Comments',
-                        'dropdown' => array(
-                            array(
-                                'title' => 'List',
-                                'url'     => array('controller' => 'comments', 'action' => 'index', 'admin' => true) 
-                            ),
-                            array(
-                                'title'   => 'Add',
-                                'url'     => array('controller' => 'comments', 'action' => 'add', 'admin' => true),
-                            ),
-                            array(
-                                'title'   => 'Bad Comment',
-                                'url'     => array('controller' => 'bad_comments', 'action' => 'index', 'admin' => true),
-                            )
-                        )
-                    ),
-                    array(
-                        'title' => 'Zip Code',
-                        'dropdown' => array(
-                            array(
-                                'title' => 'List',
-                                'url'     => array('controller' => 'zipcodes', 'action' => 'index') 
-                            ),
-                            array(
-                                'title'   => 'Add',
-                                'url'     => array('controller' => 'zipcodes', 'action' => 'add', 'admin' => true),
-                            )                          
-                        )
-                    )                         
+                    ),                   
+                                      
                       
                 );
 

@@ -33,29 +33,10 @@
             <?php $active = ($this->request->controller == 'users' && $this->request->action == 'admin_index') ? 'active' : ''; ?>            
             <li class="<?php echo $active; ?>">
               <?php echo $this->Html->link('<i class="icon-user"></i> Users', array('controller' => 'users', 'action' => 'index', 'admin' => true), array('escape' => false)); ?>
-            </li>
-            <!-- Comment -->
-            <li class="nav-header"><i class="icon-comment"></i> Comments</li>
-            <ul class="nav nav-list">
-              <?php $active = ($this->request->controller == 'comments' && $this->request->action == 'admin_index') ? 'active' : ''; ?>
-              <li class="<?php echo $active; ?>">
-              <?php echo $this->Html->link('<i class="icon-comment"></i> Good Comments', array('controller' => 'comments', 'action' => 'index', 'admin' => true), array('escape' => false)); ?>
-              </li>
-              <?php $active = ($this->request->controller == 'comments' && $this->request->action == 'admin_bad') ? 'active' : ''; ?>
-              <li class="<?php echo $active; ?>">               
-                <?php echo $this->Html->link('<i class="icon-ban-circle"></i> Bad Comments', array('controller' => 'comments', 'action' => 'bad', 'admin' => true), array('escape' => false)); ?>
-              </li> 
-              <?php $active = ($this->request->controller == 'bad_comments') ? 'active' : ''; ?>
-              <li class="<?php echo $active; ?>">               
-                <?php echo $this->Html->link('<i class="icon-filter"></i> Bad Comments Filter', array('controller' => 'bad_comments', 'action' => 'index', 'admin' => true), array('escape' => false)); ?>
-              </li> 
-            </ul>
+            </li>         
             
           
-            <?php $active = ($this->request->controller == 'zipcodes') ? 'active' : ''; ?>
-            <li class="<?php echo $active; ?>">
-              <?php echo $this->Html->link('<i class="icon-certificate"></i> Zipcode', array('controller' => 'zipcodes', 'action' => 'index', 'admin' => true), array('escape' => false)); ?>
-            </li>           
+                  
         </ul>
         </div>
       </div><!--/.well -->
