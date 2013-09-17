@@ -17,46 +17,50 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$cakeDescription = __d('cake_dev', 'Survey Site');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $title_for_layout; ?>
+		<?php //echo $cakeDescription ?>:
+		<?php echo "Indore giva"; //echo $title_for_layout; ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
-
+		echo $this->Html->css(array('bootstrap', 'bootstrap-responsive', 'jquery-ui', 'ie7', 'all-ie-only', 'admin-custom'));
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
 </head>
 <body>
+<?php $baseUrl = Router::url('/', true ); ?>
+<?php echo $this->Html->scriptBlock('var baseUrl = '.$this->Js->object($baseUrl).';'); ?>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+			<?php echo $this->element('navbar'); ?>
+		
 		</div>
-		<div id="content">
+		
+		<div id="content" class="container-fluid">
+			<div class="row-fluid">
+				<?php echo $this->element('admin-left-panel'); ?>
+				<div class="span9">
 
-			<?php echo $this->Session->flash(); ?>
+					<?php echo $this->Session->flash(); ?>
 
-			<?php echo $this->fetch('content'); ?>
+					<?php echo $this->fetch('content'); ?>
+				</div>
+			</div>
 		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
+		<div id="footer">			
 		</div>
 	</div>
+	<?php echo $this->Html->script(array('jquery-1.7.2.min', 'jquery-ui', 'jquery.selectbox-0.2', 'bootstrap', 'admin-custom')); ?>
+	<?php //echo $this->Html->script(array('jquery-1.7.2.min', 'jquery.selectbox-0.2', 'bootstrap', 'home_script', 'admin-custom')); ?>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>
