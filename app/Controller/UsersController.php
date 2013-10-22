@@ -256,7 +256,7 @@ class UsersController extends AppController {
    * @return void
    */
   public function signup() {
-    $this->layout = 'after_login';
+    $this->layout = 'version-one';
     $this->request->data['User']['group_id'] = Configure::read('general_user_group_id');   
     
     $response['success'] = 'false';
